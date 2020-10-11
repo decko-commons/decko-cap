@@ -1,5 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name = "decko-cap"
+  spec.summary = ""
 
   spec.authors = ["Ethan McCutchen", "Philipp Kühl", "Gerry Gleason"]
   spec.email = ["info@decko.org"]
