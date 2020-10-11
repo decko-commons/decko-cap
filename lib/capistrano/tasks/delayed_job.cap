@@ -2,7 +2,7 @@ def delayed_job command
   # env = "env RAILS_ENV=production"
   num_jobs = fetch :num_delayed_job_processes
   within release_path do
-    execute :ruby, "./bin/delayed_job -n #{num_jobs} #{command}"
+    execute :ruby, "./script/delayed_job -n #{num_jobs} #{command}"
   end
 end
 
