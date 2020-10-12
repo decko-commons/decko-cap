@@ -62,7 +62,7 @@ namespace :deploy do
     # invoke "maintenance:enable"
     on roles(:app) do
       within release_path do
-        execute :rake, "card:refresh_machine_output"
+        execute :rake, "card:reset_machine_output"
       end
     end
     # invoke "maintenance:disable"
