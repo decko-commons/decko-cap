@@ -1,6 +1,6 @@
-def delayed_job command, with_num=true
+def delayed_job command
   # env = "env RAILS_ENV=production"
-  num_jobs = "-n #{fetch :num_delayed_job_processes}" if with_num
+  num_jobs = "-n #{fetch :num_delayed_job_processes}"
 
   within release_path do
     execute :ruby, "./script/delayed_job #{num_jobs} #{command}"
@@ -11,7 +11,7 @@ namespace :delayed_job do
   desc "stop delayed job processes"
   task :stop do
     on roles(:app) do
-      delayed_job :stop, false
+      delayed_job :stop
     end
   end
 
