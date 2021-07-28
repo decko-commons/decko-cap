@@ -58,11 +58,11 @@ namespace :deploy do
   end
 
   desc "regenerate all stuff create by machine cards (like css and javascript)"
-  after :clear_cache, :reset_machine_output do
+  after :clear_cache, :reset_assets do
     # invoke "maintenance:enable"
     on roles(:app) do
       within release_path do
-        execute :rake, "card:reset_machine_output"
+        execute :rake, "card:asset:reset"
       end
     end
     # invoke "maintenance:disable"
