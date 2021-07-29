@@ -32,10 +32,8 @@ namespace :deploy do
     #because this creates the log and tmp files, it needs to be executed before the chown,
     # which in turn needs to happen before the restart.  not ideal.
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
       within release_path do
-        execute :rake, "decko:migrate"
-        execute :rake, "decko:update_assets_symlink"
+        execute :rake, "decko:update"
       end
     end
   end
