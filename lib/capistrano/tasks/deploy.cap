@@ -55,16 +55,16 @@ namespace :deploy do
     end
   end
 
-  desc "regenerate all stuff create by machine cards (like css and javascript)"
-  after :clear_cache, :reset_assets do
-    # invoke "maintenance:enable"
-    on roles(:app) do
-      within release_path do
-        execute :rake, "card:asset:reset"
-      end
-    end
-    # invoke "maintenance:disable"
-  end
+  # desc "regenerate all stuff create by machine cards (like css and javascript)"
+  # after :clear_cache, :reset_assets do
+  #   # invoke "maintenance:enable"
+  #   on roles(:app) do
+  #     within release_path do
+  #       execute :rake, "card:asset:reset"
+  #     end
+  #   end
+  #   # invoke "maintenance:disable"
+  # end
 
   desc "stop old delayed job processes"
   before :starting, :stop_delayed_jobs do
