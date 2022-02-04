@@ -33,16 +33,9 @@ namespace :deploy do
     # which in turn needs to happen before the restart.  not ideal.
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       within release_path do
+        execute :sudo, "chown www-data config.ru"
         execute :rake, "decko:update"
       end
-    end
-  end
-
-  # TODO: update to use https://github.com/capistrano/file-permissions
-  desc "Set www-data permissions on config.ru / log"
-  after :updated, :deploy_chown do
-    on roles(:app) do
-      execute :sudo, "/opt/bin/deploy_chown", release_path
     end
   end
 

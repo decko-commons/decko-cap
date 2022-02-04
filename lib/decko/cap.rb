@@ -13,7 +13,7 @@ module Decko
         require "capistrano/scm/git-with-submodules"
         host.install_plugin Capistrano::SCM::Git::WithSubmodules
 
-        require "capistrano/rvm"
+        # require "capistrano/rvm"
         require "capistrano/bundler"
         require "capistrano/maintenance"
         require "airbrussh/capistrano"
