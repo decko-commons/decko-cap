@@ -3,7 +3,7 @@ def delayed_job command
   num_jobs = "-n #{fetch :num_delayed_job_processes}"
 
   within release_path do
-    execute :ruby, "./script/delayed_job #{num_jobs} #{command}"
+    execute :bundle, :exec, :ruby, "./script/delayed_job #{num_jobs} #{command}"
   end
 end
 
