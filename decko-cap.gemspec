@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
    ["capistrano-git-with-submodules", '~> 2.0'],
    ["capistrano-maintenance"],
    ["capistrano-passenger"],
-   ["capistrano-rvm"],
+   # ["capistrano-rvm"],
    ["airbrussh"],
    ["bcrypt_pbkdf"],
    ["ed25519"]].each do |gem|
