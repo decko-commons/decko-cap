@@ -34,6 +34,8 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       within release_path do
         execute :sudo, "chown www-data config.ru"
+        # execute :rake, "decko:eat -v -m deckorate_research"
+        # execute :rake, "decko:eat -v -m flag"
         execute :rake, "decko:update"
       end
     end
