@@ -9,15 +9,6 @@ namespace :deploy do
     JSON.parse Net::HTTP.get(URI(url))
   end
 
-  def commit_info
-    commit = latest_commit
-    ["with latest commit #{commit["sha"][0..5]}",
-     "\"#{commit["commit"]["message"].split("\n").first}\"",
-     "by #{commit.dig("commit", "author", "name")}"]
-  rescue StandardError => e
-    ["(failed to fetch info about latest commit from #{url})", e.message]
-  end
-
   def warning_wrap *lines
     <<-EOF
 
