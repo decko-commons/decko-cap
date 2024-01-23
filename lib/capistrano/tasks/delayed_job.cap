@@ -1,4 +1,5 @@
 def delayed_job command
+  return unless Gem.loaded_specs.has_key? "delayed_job"
   # env = "env RAILS_ENV=production"
   num_jobs = "-n #{fetch :num_delayed_job_processes}"
 

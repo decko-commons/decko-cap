@@ -57,6 +57,8 @@ namespace :deploy do
     begin
       invoke "delayed_job:stop"
     rescue StandardError => failure
+      # this can happen when there is a problem with the old bundle/code even if the
+      # code being deployed is fine. that's why we give the option to continue
       puts failure
       ask :proceed, "Proceed despite error stopping delayed jobs? (y/n)"
       exit unless fetch(:proceed) == "y"
