@@ -54,7 +54,13 @@ namespace :deploy do
 
   desc "stop old delayed job processes"
   before :starting, :stop_delayed_jobs do
-    invoke "delayed_job:stop"
+    begin
+      invoke "delayed_job:stop"
+    rescue StandardError => failure
+      puts failure
+      ask :proceed, "Proceed despite error stopping delayed jobs? (y/n)"
+      exit unless fetch(:proceed) == "y"
+    end
   end
 
   desc "start delayed job processes"
